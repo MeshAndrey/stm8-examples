@@ -1,0 +1,4 @@
+ sdcc -mstm8 --std-c99 main.c
+ stm8flash -c stlinkv2 -p stm8s103f2 -w main.ihx
+
+
