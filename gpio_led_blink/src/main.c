@@ -35,10 +35,7 @@ void main(void)
 
     while(1)
     {
-        GPIOD->ODR |= (1 << 4) | (1 << 2);
-        delay(100000UL);
-        
-        GPIOD->ODR &= ~((1 << 4) | (1 << 2));
-        delay(100000UL);
+        GPIOD->ODR ^= (1 << 4) | (1 << 2);
+        delay(100000UL);        
     }
 }
