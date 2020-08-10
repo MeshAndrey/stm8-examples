@@ -7,7 +7,7 @@ PGFLAGS    = -c stlinkv2 -p stm8s103f2 -w main.ihx
 CFLAGS     = -mstm8 --std-c99
 
 
-.PHONY: all clean flash burn hex bin
+.PHONY: all clean flash
 
 all: 
 	$(CC) $(SRC) $(CFLAGS)
