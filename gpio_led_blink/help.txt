@@ -1,3 +1,7 @@
+This example shows how to use GPIO as output for blinking LED.
+LED is connected to PB5 onboard.
+
+
 Install compiler (Ubuntu):
  $ sudo apt install sdcc
 
