@@ -1,21 +1,9 @@
 /*
     D2 && D4 - LED
  */
-
+#include <stm8s.h>
 #include <stdint.h>
 
-#define GPIOD_BaseAddress       0x00500F
-#define GPIOD ((GPIO_TypeDef *) GPIOD_BaseAddress)
-
-typedef struct GPIO_struct
-{
-   volatile uint8_t ODR; /*!< Output Data Register */
-   volatile uint8_t IDR; /*!< Input Data Register */
-   volatile uint8_t DDR; /*!< Data Direction Register */
-   volatile uint8_t CR1; /*!< Configuration Register 1 */
-   volatile uint8_t CR2; /*!< Configuration Register 2 */
-}
-GPIO_TypeDef;
 
 void delay(uint32_t time)
 {
@@ -24,9 +12,9 @@ void delay(uint32_t time)
 
 void init_gpio(void)
 {
-    GPIOD->DDR |= (1 << 4) | (1 << 2);    /*set direction as output*/
-    GPIOD->ODR |= (1 << 4) | (1 << 2);    /*set output 1 */
-    GPIOD->CR1 |= (1 << 4) | (1 << 2);    /*init as push-pull*/
+    SetBit(GPIOB->DDR, 5); // set direction as output
+    SetBit(GPIOB->ODR, 5); // set output 1 
+    SetBit(GPIOB->CR1, 5); // init as push-pull
 }
 
 void main(void)
@@ -35,7 +23,7 @@ void main(void)
 
     while(1)
     {
-        GPIOD->ODR ^= (1 << 4) | (1 << 2);
+        ChgBit(GPIOB->ODR, 5);
         delay(100000UL);        
     }
 }
