@@ -1,5 +1,5 @@
 /*
-    D2 && D4 - LED
+    PB5 - LED
  */
 #include <stm8s.h>
 #include <stdint.h>
