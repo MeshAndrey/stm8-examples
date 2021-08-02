@@ -1,4 +1,17 @@
- sdcc -mstm8 --std-c99 main.c
- stm8flash -c stlinkv2 -p stm8s103f2 -w main.ihx
+This example shows how to use TIM1 (timer 1) as up-counter with interrupt.
 
+After reset MCU frequency is 2 MHz. 
+CPU frequency is divided by prescaler that has value 2000d.
+Prescaler value is divided to two separete registers PSCRH(high) and PSCRL(low).
+Auto-reload register has value 1000d for interrupting every second.
+
+ MCU_FREQ  / PRESC = TIMER_TICKS_EACH_SECOND
+2 000 000d / 2000d =          1000d
+
+TIMER_TICKS / AUTO_REL_REG = NUMBER_OF_INTERRUPTS (PER SECOND)
+   1000d    /     1000d    =         1d
+
+Actions that are done on each interrupt by interrupt handler code:
+  1. Interrupt flag is reset.
+  2. PB5(LED) is inverted.
 
