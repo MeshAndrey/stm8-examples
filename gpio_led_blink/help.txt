@@ -1,2 +1,2 @@
 This example shows how to use GPIO as output for blinking LED.
-LED is connected to PB5 onboard.
+LED is connected to PB5 (Port B Pin 5).
