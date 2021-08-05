@@ -1,0 +1,17 @@
+                               -----------------
+UART1_CK/TIM2_CH1/BEEP/HS PD4 -| 1*         20 |- PD3 (HS)/AIN4/TIM2_CH2/ADC_ETR
+UART1_TX/AIN5/        /HS PD5 -| 2          19 |- PD2 (HS)/AIN3     [TIM2_CH3]
+UART1_RX/AIN6/        /HS PD6 -| 3          18 |- PD1 (HS)/SWIM
+                        NRST  -| 4          17 |- PC7 (HS)/SPI_MISO [TIM1_CH2]
+                    OSCIN/PA1 -| 5          16 |- PC6 (HS)/SPI_MOSI [TIM1_CH1]
+                   OSCOUT/PA2 -| 6          15 |- PC5 (HS)/SPI_SCK  [TIM2_CH1]
+                        VSS   -| 7          14 |- PC4 (HS)/TIM1_CH4/CLK_CCO/AIN2 [TIM1_CH2N]
+                        VCAP  -| 8          13 |- PC3 (HS)/TIM1_CH3 [TLI] [TIM1_CH1N]
+                        VDD   -| 9          12 |- PB4 (T) /I2C_SCL [ADC_ETR]
+  [SPI_NSS] TIM2_CH3/(HS) PA3 -| 10         11 |- PB5 (T) /I2C_SDA [TIM1_BKIN]
+                               -----------------
+1. HS high sink capability.
+2. (T) True open drain (P-buffer and protection diode to VDD not implemented).
+3. [ ] alternate function remapping option (If the same alternate function is 
+   shown twice, it indicates an exclusive choice not a duplication of the function)
+
