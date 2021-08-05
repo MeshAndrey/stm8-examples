@@ -1,0 +1,5 @@
+This example shows how to use WFI (Wait for interrupt).
+MCU  goes to sleep power mode after calling WFI instruction.
+LED (PB5) is inverted on each MCU awaking.
+Code mostly same with "TIM1_it" project.
+
