@@ -1,0 +1,2 @@
+1. Create clock switching example (stm example doesn't working 
+                                   and my own realisation too).
