@@ -1,0 +1,7 @@
+This example shows how to use TIM2 (timer 2) as PWM-source.
+
+After reset MCU frequency is 2 MHz. 
+CPU frequency is divided by prescaler that has value 2^4.
+Prescaler value is in register PSCR(high).
+Auto-reload register has value 1000d for interrupting every second.
+
