@@ -11,6 +11,8 @@ Build project:
 Flash binary file that was created by previous command:  
   `make flash`
 
+*Note:* flashing may require superuser privileges.
+
 Clean project directory:  
   `make clean`
 
