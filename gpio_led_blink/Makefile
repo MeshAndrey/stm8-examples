@@ -4,19 +4,19 @@ SRCDIR     = src
 SRC        = $(wildcard $(SRCDIR)/*.c)
 PROGRAMMER = stm8flash
 LIB        = ../Include/
-PGFLAGS    = -c stlinkv2 -p stm8s103f2 -w main.ihx
-CFLAGS     = -mstm8 --std-c99 -I$(LIB)
-
+BUILD_DIR  = build/
+CFLAGS     = -mstm8 --std-c99 -I$(LIB) -o $(BUILD_DIR)
+PGFLAGS    = -c stlinkv2 -p stm8s103f2 -w $(BUILD_DIR)main.ihx
 
 .PHONY: all clean flash
 
 all: 
+	mkdir $(BUILD_DIR)
 	$(CC) $(SRC) $(CFLAGS)
 
 clean:
-	rm -f *.sym *.rst *.rel *.map *.lst *.lk *.ihx *.cdb *.asm 
+	rm -r $(BUILD_DIR) 
 
 flash: 
 	$(PROGRAMMER) $(PGFLAGS)
-
 
