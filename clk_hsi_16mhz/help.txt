@@ -1,4 +1,2 @@
- sdcc -mstm8 --std-c99 main.c
- stm8flash -c stlinkv2 -p stm8s103f2 -w main.ihx
-
+This example shows how to set MCU's HSI CLK (high speed internal clock) up to 16 MHz.
 
