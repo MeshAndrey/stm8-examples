@@ -3,17 +3,20 @@ CC         = sdcc
 SRCDIR     = src
 SRC        = $(wildcard $(SRCDIR)/*.c)
 PROGRAMMER = stm8flash
-PGFLAGS    = -c stlinkv2 -p stm8s103f2 -w main.ihx
-CFLAGS     = -mstm8 --std-c99
+LIB        = ../Include/
+BUILD_DIR  = build/
+PGFLAGS    = -c stlinkv2 -p stm8s103f2 -w $(BUILD_DIR)main.ihx
+CFLAGS     = -mstm8 --std-c99 -I$(LIB) -o $(BUILD_DIR)
 
 
 .PHONY: all clean flash burn hex bin
 
 all: 
+	mkdir $(BUILD_DIR)
 	$(CC) $(SRC) $(CFLAGS)
 
 clean:
-	rm -f *.sym *.rst *.rel *.map *.lst *.lk *.ihx *.cdb *.asm 
+	rm -r $(BUILD_DIR)
 
 flash: 
 	$(PROGRAMMER) $(PGFLAGS)
