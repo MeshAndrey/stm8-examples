@@ -11,11 +11,11 @@ PGFLAGS    = -c stlinkv2 -p stm8s103f2 -w $(BUILD_DIR)main.ihx
 .PHONY: all clean flash
 
 all: 
-	mkdir $(BUILD_DIR)
+	[ -d $(BUILD_DIR) ] || mkdir $(BUILD_DIR)
 	$(CC) $(SRC) $(CFLAGS)
 
 clean:
-	rm -r $(BUILD_DIR) 
+	[ -d $(BUILD_DIR) ] && rm -r $(BUILD_DIR) 
 
 flash: 
 	$(PROGRAMMER) $(PGFLAGS)
