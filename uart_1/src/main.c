@@ -16,24 +16,9 @@ void init_gpio(void)
     ClrBit(GPIOD->CR1, 6); // alternate-function
 }
 
-void init_clk(void) /* */
-{
-    CLK->ICKR = 0;    // Reset HSI
-    CLK->ICKR = 0x01; // Enable HSI
-    CLK->ECKR = 0x00; // Reset HSE
-
-    while((CLK->ICKR & (1 << 1)) == 0)
-    {
-        nop();   // Waiting for HSIRDY (High speed internal oscillator ready) 
-                          // bit is set by hardware
-    }
-
-    SetBit(CLK->PCKENR1, 3); // enable uart 1
-    SetBit(CLK->PCKENR1, 7); // Enable TIM1    
-}
-
 void init_uart1(void)
 {
+    SetBit(CLK->PCKENR1, 3); // enable uart1 clock 
     SetBit(UART1->CR2, 3); // enable uart
     ClrBit(UART1->CR3, 5);
     ClrBit(UART1->CR3, 4); // 1 stop-bit
@@ -48,6 +33,7 @@ void init_uart1(void)
 
 void init_tim1(void)
 {
+    SetBit(CLK->PCKENR1, 7); // Enable TIM1 clock
     TIM1->CR1 &= ~TIM1_CR1_DIR; // Counter used as up-counter
 
     TIM1->PSCRH = 0x07; // High bits of 2000d in prescaler
@@ -62,7 +48,7 @@ void init_tim1(void)
 
 void uart_tx_byte(uint8_t data) // send byte
 {
-    while(!(UART1->SR & (1 << 7)));
+    while(!ValBit(UART1->SR, 7));
 
     UART1->DR = data;
 }
@@ -72,25 +58,16 @@ void TIM1_Update(void) __interrupt(11)
     TIM1->SR1 &= ~TIM1_SR1_UIF;
 
     uart_tx_byte(0x30 + counter / 100);
-    uart_tx_byte(0x30 + counter % 100 / 10);
+    uart_tx_byte(0x30 + (counter % 100) / 10);
     uart_tx_byte(0x30 + counter % 10);
     uart_tx_byte('\r');
     uart_tx_byte('\n');
     counter++;
 }
 
-/*
-void putchar(char c) //send char to uart
-{
-    while(!(UART1->SR & (1 << 7))); // wait for data register of uart1 is empty
-    UART1->DR = c;
-}
-*/
-
 void main(void)
 {
     init_gpio();
-    init_clk();
     init_uart1();
     init_tim1();
 
