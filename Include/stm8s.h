@@ -2578,6 +2578,16 @@ Comments :    The idea is to handle directly with the bit name. For that, it is
 #define BitVal(BIT)  ( *((unsigned char *) (AREA+(BIT)/8)) & (1<<(7-(BIT)%8)) )
 
 /* Exported functions ------------------------------------------------------- */
+/* Bits definition    --------------------------------------------------------*/
+#define BIT_7    (u8)(1 << 7)
+#define BIT_6    (u8)(1 << 6)
+#define BIT_5    (u8)(1 << 5)
+#define BIT_4    (u8)(1 << 4)
+#define BIT_3    (u8)(1 << 3)
+#define BIT_2    (u8)(1 << 2)
+#define BIT_1    (u8)(1 << 1)
+#define BIT_0    (u8)(1 << 0)
+
 
 #endif /* __STM8S_H */
 
