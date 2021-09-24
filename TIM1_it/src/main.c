@@ -3,14 +3,14 @@
 #include <stdint.h>
 #include <stm8s.h>
 
-void init_gpio(void)
+inline void init_gpio(void)
 {
     SetBit(GPIOB->DDR, 5); /* set direction as output */
     SetBit(GPIOB->ODR, 5); /* set output 1 */
     SetBit(GPIOB->CR1, 5); /* init as push-pull */
 }
 
-void init_tim1(void)
+inline void init_tim1(void)
 {
     CLK->PCKENR1 |= CLK_PCKENR1_TIM1; // Enable TIM1
 
