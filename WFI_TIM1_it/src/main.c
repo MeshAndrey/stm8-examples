@@ -39,8 +39,6 @@ int main(void)
 
     rim(); // enable interrupts
 
-    SetBit(GPIOB->ODR, 5);
-
     while(1)
     {
         wfi(); // go to sleep mode
