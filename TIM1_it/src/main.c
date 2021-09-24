@@ -16,11 +16,11 @@ void init_tim1(void)
 
     TIM1->CR1 &= ~TIM1_CR1_DIR; // Counter used as up-counter
 
-    TIM1->PSCRH = 0x07; // High bits of 2000d in prescaler
-    TIM1->PSCRL = 0xD0; // Low  bits of 2000d in prescaler
+    TIM1->PSCRH = BYTE_1(0x07D0); // High bits of 2000d in prescaler
+    TIM1->PSCRL = BYTE_0(0x07D0); // Low  bits of 2000d in prescaler
 
-    TIM1->ARRH  = 0x03; // high bits of 1000d in auto-reload register
-    TIM1->ARRL  = 0xE8; // low  bits of 1000d in auto-reload register
+    TIM1->ARRH  = BYTE_1(0x03E8); // high bits of 1000d in auto-reload register
+    TIM1->ARRL  = BYTE_0(0x03E8); // low  bits of 1000d in auto-reload register
 
     TIM1->IER |= TIM1_IER_UIE; // Enable interrupt
     TIM1->CR1 |= TIM1_CR1_CEN; // Counter enabled
