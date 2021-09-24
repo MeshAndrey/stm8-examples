@@ -3,14 +3,14 @@
 #include <stdint.h>
 #include <stm8s.h>
 
-void init_gpio(void)
+inline void init_gpio(void)
 {
     SetBit(GPIOB->DDR, 5); /* set direction as output */
     SetBit(GPIOB->ODR, 5); /* set output 1 */
     SetBit(GPIOB->CR1, 5); /* init as push-pull */
 }
 
-void init_tim1(void)
+inline void init_tim1(void)
 {
     CLK->PCKENR1 |= CLK_PCKENR1_TIM1; // Enable TIM1
 
@@ -28,7 +28,7 @@ void init_tim1(void)
 
 void TIM1_Update(void) __interrupt(11)
 {
-    TIM1->SR1 &= ~TIM1_SR1_UIF;
+    TIM1->SR1 &= ~TIM1_SR1_UIF; // reset update interrupt flag
 }
 
 int main(void)
@@ -43,8 +43,8 @@ int main(void)
 
     while(1)
     {
-        wfi(); // enable sleep mode
-        ChgBit(GPIOB->ODR, 5);
+        wfi(); // go to sleep mode
+        ChgBit(GPIOB->ODR, 5); // change output on each awakening
     }
 }
 
