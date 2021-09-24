@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <stm8s.h>
 
-void init_tim2(void)
+inline void init_tim2(void)
 {
     CLK->PCKENR1 |= CLK_PCKENR1_TIM2; // Enable TIM2
 
