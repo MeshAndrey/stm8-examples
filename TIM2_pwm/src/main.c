@@ -14,8 +14,8 @@ inline void init_tim2(void)
     TIM2->ARRH = BYTE_1(1000); // high bits of 1000d in auto-reload register
     TIM2->ARRL = BYTE_0(1000); // low  bits of 1000d in auto-reload register
 
-    TIM2->CCMR1 = (1 << 6) | (1 << 5)  //| (1 << 4) // PWM mode 1
-	                   | (1 << 3); // Output compare 1 Preload enable
+    TIM2->CCMR1 = BIT_6 | BIT_5  //| (1 << 4) // PWM mode 1
+	                | BIT_3; // Output compare 1 Preload enable
 
     //TIM2->CCR1H = 0x00;  // high bits of 500d in Capture/compare register
     TIM2->CCR1L = BYTE_0(500);  // low  bits of 500d in Capture/compare register
