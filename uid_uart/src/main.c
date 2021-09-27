@@ -20,14 +20,14 @@ typedef struct UID_struct
 }
 UID_TypeDef;
 
-void init_gpio(void)
+inline void init_gpio(void)
 {
     ClrBit(GPIOD->DDR, 6); // Rx
     SetBit(GPIOD->DDR, 5); // Tx
     ClrBit(GPIOD->CR1, 6); // alternate-function
 }
 
-void init_uart1(void)
+inline void init_uart1(void)
 {
     SetBit(CLK->PCKENR1, 3); // enable uart1 clock 
     SetBit(UART1->CR2, 3); // enable uart
@@ -42,7 +42,7 @@ void init_uart1(void)
     UART1->BRR1 |= 0x0D;
 }
 
-void init_tim1(void)
+inline void init_tim1(void)
 {
     SetBit(CLK->PCKENR1, 7); // Enable TIM1 clock
     TIM1->CR1 &= ~TIM1_CR1_DIR; // Counter used as up-counter
