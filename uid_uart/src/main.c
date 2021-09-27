@@ -57,14 +57,14 @@ inline void init_tim1(void)
     TIM1->CR1  |= TIM1_CR1_CEN; // Counter enabled
 }
 
-void uart_tx_byte(uint8_t data) // send byte
+void uart_tx_byte(const uint8_t data) // send byte
 {
     while(!ValBit(UART1->SR, 7));
 
     UART1->DR = data;
 }
 
-void uart_tx_array(uint8_t * array, uint8_t size)
+void uart_tx_array(const uint8_t * array, const uint8_t size)
 {
     for (uint8_t i = 0; i < size; i++)
     {
