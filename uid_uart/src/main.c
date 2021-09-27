@@ -68,9 +68,9 @@ void uart_tx_array(uint8_t * array, uint8_t size)
 {
     for (uint8_t i = 0; i < size; i++)
     {
-        uart_tx_byte(0x30 + array[i] / 100);
-        uart_tx_byte(0x30 + (array[i] % 100) / 10);
-        uart_tx_byte(0x30 + array[i] % 10);
+        uart_tx_byte(0x30 + (array[i] / 100));
+        uart_tx_byte(0x30 + ((array[i] % 100) / 10));
+        uart_tx_byte(0x30 + (array[i] % 10));
 	uart_tx_byte(' ');
     }
 }
