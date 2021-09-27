@@ -5,12 +5,12 @@
 #include <stdint.h>
 
 
-void delay(uint32_t time)
+inline void delay(uint32_t time)
 {
     while(time--);
 }
 
-void init_gpio(void)
+inline void init_gpio(void)
 {
     SetBit(GPIOB->DDR, 5); // set direction as output
     SetBit(GPIOB->ODR, 5); // set output 1 
