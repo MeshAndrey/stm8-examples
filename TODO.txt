@@ -1,2 +1,4 @@
 1. Create clock switching example (stm example doesn't work 
                                    and my own realisation too).
+2. Add ADC example.
+3. Add GPIO EXTI example.
