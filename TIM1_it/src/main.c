@@ -41,8 +41,6 @@ int main(void)
 
     rim(); // enable interrupts
 
-    SetBit(GPIOB->ODR, 5);
-
     while(1)
     {
 
