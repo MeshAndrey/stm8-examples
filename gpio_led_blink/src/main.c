@@ -4,12 +4,13 @@
 #include <stm8s.h>
 #include <stdint.h>
 
-
+// simple delay  
 inline void delay(uint32_t time)
 {
     while(time--);
 }
 
+// initializing peripheral
 inline void init_gpio(void)
 {
     SetBit(GPIOB->DDR, 5); // set direction as output
