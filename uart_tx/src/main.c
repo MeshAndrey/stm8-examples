@@ -1,6 +1,6 @@
 /*
     this example shows basics of uart transmitting -
-    global varieble "counter" is incrementing and sending to uart every second 
+    global variable "counter" is incrementing and sending to uart every second 
     (by tim1 & it's interrupt)
  */
 
@@ -19,7 +19,6 @@ void init_gpio(void)
 void init_uart1(void)
 {
     SetBit(CLK->PCKENR1, 3); // enable uart1 clock 
-    SetBit(UART1->CR2, 3); // enable uart
     ClrBit(UART1->CR3, 5);
     ClrBit(UART1->CR3, 4); // 1 stop-bit
 
@@ -27,8 +26,9 @@ void init_uart1(void)
     // UART_DIV = f_cpu / baud_rate = 2 000 000 / 9600 = 208d = 0xD0;
     // then this number is using in BRR1 & BRR2 registers
     // ! how to split bits look to Reference Manual !
-    UART1->BRR2 |= 0x00;
-    UART1->BRR1 |= 0x0D;
+    // UART1->BRR2 |= 0x00; - useless operation - reset value is 0x00
+    UART1->BRR1 = 0x0D;
+    SetBit(UART1->CR2, 3); // enable uart
 }
 
 void init_tim1(void)
