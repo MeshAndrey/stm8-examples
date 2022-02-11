@@ -1,0 +1,4 @@
+ sdcc -mstm8 --std-c99 main.c	// compile 
+ stm8flash -c stlinkv2 -p stm8s103f2 -w main.ihx // flash
+ sudo picocom /dev/ttyUSB0 -b9600 // use virtual com port
+
