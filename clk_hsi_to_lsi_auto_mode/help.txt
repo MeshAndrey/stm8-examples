@@ -1,0 +1,2 @@
+This example shows how to use LSI CLK (low speed internal clock) as a clock source.
+LSI clock selecting done by using auto mode.
