@@ -1,2 +1,6 @@
 This example shows how to use LSI CLK (low speed internal clock) as a clock source.
-LSI clock selecting done by using auto mode.
+LSI clock selecting done by using auto mode. LSI clock operates at 128kHz.
+At start MCU uses default clock source - HSE at 2MHz. 
+Than GPIO, Option bytes, CLK registers are configured.
+To see differece between clock you can comment init_clk_lsi usage.
+An LED with LSI clock changes it states 2MHz/128kHz times slower.
