@@ -39,7 +39,7 @@ void init_clk_lsi(void)
  
 void ClockControlerInterrupt (void) __interrupt(2) 
 {
-    CLK->SWCR &= ~CLK_SWCR_SWIF;                    // clear SWIF flag
+    ClrBit(CLK->SWCR, 3); // clear SWIF flag
 }
  
 void main(void)
